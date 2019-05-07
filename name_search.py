@@ -1,9 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
-idNum = 15931
-ID_MIN = 10000
-ID_MAX = 99999
+#Lowest min value of ID.
+ID_START = 15900
 
 
 def id_to_link (id):
@@ -31,5 +30,3 @@ def find_max(min_id, incr):
 	else:
 		return find_max(min_id, int(incr/2))
 
-max = find_max(15800, 100)
-print(max)
