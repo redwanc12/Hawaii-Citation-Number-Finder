@@ -15,16 +15,21 @@ def blank(link):
 	#checks ia link does not contain a valid ID.
 	page = requests.get(link)
 	soup = BeautifulSoup(page.text, 'html.parser')
-	if('NO RESULTS' in soup.find('strong').text):
-		return True
+	strongTag = soup.find('strong')
+	if(strongTag is not None):
+		if('NO RESULTS' in strongTag):
+			return True
 	return False
 
-def find_max():
-	if(blank(id_to_link(ID_MAX))):
-		ID_MAX = ID_MAX/2
+def find_max(min_id, incr):
+	#finds the most recent ID number issued
+	while(not blank(id_to_link(min_id))):
+		min_id = min_id + incr
+	min_id = min_id - incr
+	if(blank(id_to_link(min_id+1))):
+		return min_id
 	else:
-		print(ID_MAX)
+		return find_max(min_id, int(incr/2))
 
-find_max()
-
-
+max = find_max(15800, 100)
+print(max)
