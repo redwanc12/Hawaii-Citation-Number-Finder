@@ -18,6 +18,7 @@ while(idNum <= ID_MAX):
 		if(('FIRST' not in each.text) and ('1D' not in each.text)):
 			if(name in each.text):
 				print('1DTI-19-0' + str(idNum))
+				print(each.text)
 				break
 
 	idNum = idNum + 1
