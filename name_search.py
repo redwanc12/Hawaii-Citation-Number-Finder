@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-#Lowest min value of ID.
-ID_START = 15900
-
 
 def id_to_link (id):
 	#converts an id to a link for that id
